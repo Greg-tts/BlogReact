@@ -6,14 +6,14 @@ const ShowBlogEntry=(props)=>{
 
     React.useEffect(()=>{
         const id = props.match.params.id;
-        fetch("http://localhost:8080/entry/" + id)
+        fetch("https://blogentryproject.cfapps.io/entry/" + id)
             .then((res)=>res.json())
             .then((entryRes)=>{
                 setEntry(entryRes);
             })
     }, []);
     const deleteEntry=(id)=>{
-        fetch("http://localhost:8080/entry/" + id, {
+        fetch("https://blogentryproject.cfapps.io/entry/" + id, {
             method: 'delete'
         }).then(()=>{
             props.fetchEntries();

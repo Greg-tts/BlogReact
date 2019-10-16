@@ -15,7 +15,7 @@ const BlogEntryForm=(props)=>{
         setContent(e.target.value);
     }
     const handleCreateClick=()=>{
-        fetch('http://localhost:8080/entry', {
+        fetch('https://blogentryproject.cfapps.io/entry', {
             method: 'post',
             headers: {
                 "Content-Type": "application/json"
@@ -34,7 +34,7 @@ const BlogEntryForm=(props)=>{
         })
     }
     const handleUpdateClick=()=>{
-        fetch('http://localhost:8080/entry/' + id, {
+        fetch('https://blogentryproject.cfapps.io/entry/' + id, {
             method: 'put',
             headers: {
                 "Content-Type": "application/json"
@@ -53,10 +53,19 @@ const BlogEntryForm=(props)=>{
             props.history.push('/');
         })
     }
+
+    React.useEffect(()=>{
+        setId(0);
+        setTitle("");
+        setAuthor("");
+        setContent("");
+    }, [props.match])
+
     React.useEffect(()=>{
         let id = props.match ? props.match.params.id : 0;
         setId(id);
     }, [])
+
     let buttonAction;
     if(id){
         buttonAction = <button onClick={handleUpdateClick}>Update</button>

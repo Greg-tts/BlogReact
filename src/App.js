@@ -13,7 +13,7 @@ class App extends React.Component{
     }
   }
   fetchEntries=()=>{
-    fetch("http://localhost:8080/entries")
+    fetch("https://blogentryproject.cfapps.io/entries")
       .then((res)=>res.json())
       .then((entries)=>{
         this.setState({blogEntries: entries});
